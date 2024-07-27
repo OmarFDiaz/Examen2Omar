@@ -19,40 +19,40 @@ class _genieState extends State<genie> {
       appBar: AppBar(
         title: Text('Examen2- omar Diaz'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text('$gif'),
-            Text(
-              '$answer',
-              style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54),
-            ),
-            TextField(
-              autofocus: true,
-              controller: pregunta,
-              decoration:  InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: 'Pregunta',
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    if(pregunta.text.isNotEmpty)
-                    {
-                      if(pregunta.text.substring(pregunta.text.length) == '?')
-                      {
-                        // setState(() {
-                        //   answer.
-                        // });
-                      }
+      body: Column(
+        children: [
+          Text('$gif'),
+          Text(
+            '$answer',
+            style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black54),
+          ),
+          TextField(
+            autofocus: true,
+            controller: pregunta,
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              labelText: 'Pregunta',
+              suffixIcon: IconButton(
+                onPressed: () {
+                  if (pregunta.text.isNotEmpty) {
+                    if (pregunta.text.substring(pregunta.text.length) == '?') {
+                      setState(() {
+                        Map data = answer.getAnswer();
+
+                        gif = data['image'];
+                        answer = data['answer'];
+                      });
                     }
-                  },
-                  icon: Icon(Icons.question_mark),
+                  }
+                },
+                icon: Icon(Icons.question_mark),
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
